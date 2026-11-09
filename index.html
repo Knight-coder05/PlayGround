@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0d12" />
+  <link rel="icon" href="data:," />
+  <title>Embervault — The Tower Below</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Embervault home"><span class="brand-mark">✦</span><span>EMBER<span class="brand-light">VAULT</span></span></a>
+      <div class="run-label"><span class="live-dot"></span><span id="run-state">THE DESCENT</span></div>
+      <button class="icon-btn" id="sound-btn" aria-label="Toggle sound" title="Toggle sound">♫</button>
+    </header>
+
+    <section class="game-layout">
+      <aside class="left-rail">
+        <div class="floor-card panel">
+          <span class="eyebrow">CURRENT FLOOR</span>
+          <div class="floor-number"><span id="floor-number">01</span><span class="floor-of">/ 10</span></div>
+          <div class="floor-name" id="floor-name">THE ASHEN GATE</div>
+          <div class="floor-progress"><span id="floor-progress"></span></div>
+          <div class="floor-hint" id="floor-hint">Find the stairs to descend</div>
+        </div>
+        <div class="hero-card panel">
+          <div class="hero-heading"><div class="hero-avatar">♙</div><div><span class="eyebrow">ADVENTURER</span><strong>Wayfarer</strong></div><span class="level-badge">LV <b id="level">1</b></span></div>
+          <div class="stat-line"><span>VITALITY</span><b id="hp-text">30 / 30</b></div>
+          <div class="meter"><span class="health-fill" id="health-fill"></span></div>
+          <div class="stat-line xp-line"><span>EXPERIENCE</span><b id="xp-text">0 / 20</b></div>
+          <div class="meter xp-meter"><span class="xp-fill" id="xp-fill"></span></div>
+          <div class="hero-footer"><span>⚔ <b id="attack-stat">6</b> ATK</span><span>◈ <b id="potion-count">2</b> POTIONS</span></div>
+        </div>
+        <div class="objective panel"><div class="objective-icon">⌖</div><div><span class="eyebrow">YOUR OBJECTIVE</span><p id="objective-text">Explore the floor. Defeat what waits below.</p></div></div>
+        <div class="desktop-controls panel"><span class="eyebrow">QUICK GUIDE</span><div class="key-guide"><kbd>WASD</kbd><span>Move</span></div><div class="key-guide"><kbd>SPACE</kbd><span>Attack ahead</span></div><div class="key-guide"><kbd>Q</kbd><span>Drink potion</span></div></div>
+      </aside>
+
+      <section class="arena-wrap">
+        <div class="arena-top"><div class="location"><span class="location-pin">⌖</span><span id="location-label">THE ASHEN GATE</span></div><div class="arena-meta"><span class="enemy-indicator"><i></i><b id="enemy-count">0</b> REMAINING</span><button class="map-toggle" id="map-toggle">MAP <span>▦</span></button></div></div>
+        <div class="arena" id="arena">
+          <div id="loading" class="loading"><span class="loader-mark">✦</span><span>AWAKENING THE SPIRE</span></div>
+          <canvas id="game-canvas" aria-label="3D dungeon game"></canvas>
+          <div class="scene-vignette"></div>
+          <div class="floor-toast" id="floor-toast"><span>FLOOR 01</span><b>THE ASHEN GATE</b></div>
+          <div class="combat-flash" id="combat-flash"></div>
+          <div class="map-card" id="map-card"><div class="map-head"><span>FLOOR MAP</span><button id="map-close" aria-label="Close map">×</button></div><canvas id="map-canvas" width="180" height="180"></canvas><div class="map-legend"><span><i class="you-dot"></i> YOU</span><span><i class="foe-dot"></i> FOE</span><span><i class="stairs-dot"></i> EXIT</span></div></div>
+          <div class="toast" id="toast" aria-live="polite"></div>
+          <div class="touch-controls" aria-label="Touch controls">
+            <div class="dpad">
+              <button class="pad-btn pad-up" data-move="0,-1" aria-label="Move up">▲</button>
+              <button class="pad-btn pad-left" data-move="-1,0" aria-label="Move left">◀</button>
+              <button class="pad-btn pad-down" data-move="0,1" aria-label="Move down">▼</button>
+              <button class="pad-btn pad-right" data-move="1,0" aria-label="Move right">▶</button>
+              <span class="pad-center">MOVE</span>
+            </div>
+            <div class="action-buttons"><button class="action-btn attack-btn" id="attack-btn"><span>⚔</span><b>STRIKE</b></button><button class="action-btn potion-btn" id="potion-btn"><span>◈</span><b>POTION</b><em id="mobile-potions">2</em></button></div>
+          </div>
+        </div>
+        <div class="arena-bottom"><div class="log-label"><span class="log-spark">✦</span> FIELD NOTES</div><p id="game-log">A cold wind rises from the stairwell. Your story begins here.</p><div class="turn-label"><span class="turn-dot"></span> YOUR TURN</div></div>
+      </section>
+    </section>
+    <footer class="footer"><span>EMBERVAULT <i>•</i> A TOWER-CRAWLING ADVENTURE</span><span>WASD / ARROWS <i>•</i> SPACE TO STRIKE</span></footer>
+  </main>
+
+  <div class="start-screen" id="start-screen">
+    <div class="start-card"><div class="start-emblem">✦</div><span class="eyebrow">A TOWER-CRAWLING ADVENTURE</span><h1>THE SPIRE<br><span>REMEMBERS.</span></h1><p>Ten floors descend into an ancient dark. Find the stairs, gather strength, and uncover what waits at the bottom.</p><div class="start-features"><span>⌖ 10 FLOORS</span><span>⚔ TURN-BASED COMBAT</span><span>◈ MOBILE READY</span></div><button class="start-btn" id="start-btn">ENTER THE SPIRE <span>→</span></button><small>NO SAVE POINTS. EVERY STEP COUNTS.</small></div>
+    <div class="start-orbit orbit-one"></div><div class="start-orbit orbit-two"></div>
+  </div>
+  <div class="modal-screen hidden" id="end-screen"><div class="end-card"><div class="end-icon" id="end-icon">✦</div><span class="eyebrow" id="end-eyebrow">THE SPIRE CLAIMS ANOTHER</span><h2 id="end-title">YOUR LIGHT FADES</h2><p id="end-copy">The tower is patient. It will be here when you return.</p><button class="start-btn" id="restart-btn">TRY AGAIN <span>↻</span></button></div></div>
+  <div class="level-up hidden" id="level-up"><span>✦</span><b>LEVEL UP</b><small>STRONGER IN THE DARK</small></div>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
