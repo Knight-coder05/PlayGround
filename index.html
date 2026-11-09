@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a0b10" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23e3a65c' d='M32 4 38 25 58 32 38 39 32 60 25 39 5 32 25 25z'/%3E%3C/svg%3E" />
+  <title>EMBERKEEP — The Hollow Tower</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="game-shell">
+    <div id="viewport" aria-label="3D dungeon game"></div>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">✦</span><div><strong>EMBERKEEP</strong><small>THE HOLLOW TOWER</small></div></div>
+      <div class="floor-card"><span class="floor-label">CURRENT ASCENT</span><div><span class="floor-number" id="floor-number">01</span><span class="floor-name" id="floor-name">THE ASHEN GATE</span></div></div>
+      <button class="sound-button" id="sound-button" aria-label="Toggle sound">♫ <span>SOUND ON</span></button>
+    </header>
+    <section class="hud-left">
+      <div class="hero-card"><div class="hero-avatar">♙</div><div class="hero-info"><strong>Wayfarer</strong><span>WANDERER · LV <b id="level">01</b></span></div><div class="coin-count"><span>◈</span><b id="coins">0</b></div></div>
+      <div class="stat-row"><span class="stat-icon heart">♥</span><div class="stat-meter"><div class="meter-label"><span>VITALITY</span><b id="hp-text">100 / 100</b></div><div class="meter-track"><i id="hp-fill" class="hp-fill"></i></div></div></div>
+      <div class="stat-row xp-row"><span class="stat-icon">✧</span><div class="stat-meter"><div class="meter-label"><span>EXPERIENCE</span><b id="xp-text">0 / 100</b></div><div class="meter-track"><i id="xp-fill" class="xp-fill"></i></div></div></div>
+    </section>
+    <section class="objective"><div class="objective-icon">⚔</div><div><span>YOUR OATH</span><strong id="objective-text">Clear the chamber</strong></div><div class="enemy-counter" id="enemy-counter">0 <small>REMAIN</small></div></section>
+    <div class="toast" id="toast"></div>
+    <div class="floor-banner" id="floor-banner"><span>ASCENSION</span><strong>THE TOWER REMEMBERS</strong></div>
+    <div class="interact-prompt" id="interact-prompt"><span>↑</span> ENTER THE LIFT <small>Tap to ascend</small></div>
+    <div class="controls-hint" id="controls-hint"><span>WASD</span> MOVE <i>·</i> <span>SPACE</span> STRIKE <i>·</i> <span>SHIFT</span> DASH</div>
+    <div class="mobile-controls" id="mobile-controls">
+      <div class="joystick" id="joystick"><div class="joy-ring"></div><div class="joy-knob" id="joy-knob"></div></div>
+      <div class="action-buttons"><button class="action-btn dodge-btn" id="dodge-btn"><span>↗</span><small>DASH</small></button><button class="action-btn attack-btn" id="attack-btn"><span>⚔</span><small>STRIKE</small></button></div>
+    </div>
+    <div class="center-notice" id="center-notice"><span class="notice-kicker">A WANDERER'S TALE</span><h1>THE HOLLOW<br><em>TOWER</em></h1><p>Something ancient stirs above the ash.<br>Climb. Survive. Remember.</p><button id="begin-button">BEGIN YOUR ASCENT <span>→</span></button><small>BEST EXPERIENCED WITH SOUND</small></div>
+    <div class="levelup-modal hidden" id="levelup-modal"><div class="modal-card"><span class="notice-kicker">A MOMENT OF CLARITY</span><h2>Choose your <em>boon</em></h2><p>The tower tests you. It also makes you stronger.</p><div class="boon-options" id="boon-options"></div></div></div>
+    <div class="gameover-modal hidden" id="gameover-modal"><div class="modal-card"><span class="notice-kicker">THE TOWER CLAIMS ANOTHER</span><h2>Your tale is <em>not over</em></h2><p id="run-summary">You reached the first floor.</p><button id="retry-button">RISE AGAIN <span>↻</span></button></div></div>
+    <div class="floor-clear" id="floor-clear"><span>CHAMBER CLEARED</span><strong>THE LIFT IS OPEN</strong></div>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>

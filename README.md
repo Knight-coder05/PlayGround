@@ -1,6 +1,26 @@
 # PlayGround
 
 <!-- omgithub:readme:start -->
+
+## Emberkeep: The Hollow Tower
+
+A small 3D action-RPG dungeon crawler built for desktop and touch screens. Clear each chamber, gather crowns and experience, choose a boon when you level up, and use the lift to climb the endless tower. Every third floor has a warden.
+
+### Play
+
+Serve this folder over HTTP (ES modules and Three.js are loaded by the browser):
+
+```sh
+python3 -m http.server 3002
+```
+
+Then open `http://localhost:3002`.
+
+- **Desktop:** WASD or arrow keys to move, Space/J to strike, Shift/K to dash, E/Enter to use the lift.
+- **Phone/tablet:** left joystick to move; Strike and Dash buttons on the right. Walk to the glowing lift and tap the prompt to ascend.
+- Collect dropped crowns and potions. Avoid enemy attacks with your dash.
+
+<!-- omgithub:readme:start -->
 ## 🚀 Build, play, and remix with OMGithub
 
 **Created using [android-create.lolgames.net](https://go.ondev.store/).**
